@@ -27,6 +27,8 @@ def loadTables(conn):
         file = table_file_map[table_name]
         conn.loadCSVFiles(file, table_name)
 
+    return
+
 
 def initializeDBObjects(conn):
     ddl_statements = DDL_Queries.ddl_statements
@@ -35,6 +37,8 @@ def initializeDBObjects(conn):
         conn.executeSQL(sql)
 
     loadTables(conn)
+
+    return
 
 
 if __name__ == '__main__':
