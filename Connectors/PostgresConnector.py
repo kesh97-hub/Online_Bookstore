@@ -54,8 +54,6 @@ class PostgresConnector:
                 header = next(reader)
                 columns = [sql.Identifier(column) for column in header]
 
-                # print(columns)
-
                 insert_statement = sql.SQL('INSERT INTO {} ({}) VALUES ({})').format(
                     sql.Identifier(table_name),
                     sql.SQL(', ').join(columns),

@@ -55,7 +55,9 @@ ddl_statements = [
             CONSTRAINT books_pk 
                 PRIMARY KEY (book_id),
             CONSTRAINT books_fk1 
-                FOREIGN KEY (author_id) REFERENCES authors(author_id)
+                FOREIGN KEY (author_id) REFERENCES authors(author_id),
+            CONSTRAINT books_fk2
+                FOREIGN KEY (series_id) REFERENCES series(series_id) ON DELETE SET NULL
         );
     ''',
 
@@ -113,7 +115,7 @@ ddl_statements = [
             CONSTRAINT editions_fk1 
                 FOREIGN KEY (book_id) REFERENCES books(book_id),
             CONSTRAINT edition_fk2 
-                FOREIGN KEY (publisher_id) REFERENCES publishers(publisher_id)
+                FOREIGN KEY (publisher_id) REFERENCES publishers(publisher_id) ON DELETE CASCADE
         );
     ''',
 
@@ -150,7 +152,7 @@ ddl_statements = [
             CONSTRAINT items_fk1
                 FOREIGN KEY (isbn) REFERENCES editions(isbn),
             CONSTRAINT items_fk2
-                FOREIGN KEY (order_id) REFERENCES orders(order_id)
+                FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE
         );
     '''
 ]
